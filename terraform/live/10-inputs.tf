@@ -20,3 +20,9 @@ variable "branch_name" {
 variable "service_pipeline_arn" {
   default = ""
 }
+
+
+
+variable "db_password" {
+  default = ""
+}
