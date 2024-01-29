@@ -8,8 +8,7 @@ phases:
       - sudo apt-get install -y openjdk-8-jdk maven
   pre_build:
     commands:
-      - sudo systemctl start apache2
-      - sudo systemctl enable apache2
+      - sudo apache2ctl start
       - git clone https://github.com/geosolutions-it/geostore.git
       - cd geostore
   build:

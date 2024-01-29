@@ -37,8 +37,11 @@ resource "aws_codebuild_project" "geostore" {
 
   logs_config {
     cloudwatch_logs {
-      status = "DISABLED"
+      status = "ENABLED"
     }
+    #    s3_logs {
+    #      status = "ENABLED"
+    #    }
   }
 
   source {
