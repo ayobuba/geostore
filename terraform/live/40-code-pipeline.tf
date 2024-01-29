@@ -14,7 +14,6 @@ locals {
   }
 }
 
-
 resource "aws_codebuild_project" "geostore" {
   badge_enabled      = false
   encryption_key     = var.encryption_key
@@ -33,6 +32,17 @@ resource "aws_codebuild_project" "geostore" {
     image_pull_credentials_type = "CODEBUILD"
     privileged_mode             = false
     type                        = "LINUX_CONTAINER"
+    environment_variable {
+      name  = "GEOSTORE_PASSWORD"
+      value = var.db_password
+      type  = "PLAINTEXT"
+    }
+    environment_variable {
+      name  = "GEOSTORE_URL"
+      value = "jdbc:postgresql://${aws_db_instance.geostore.address}:${aws_db_instance.geostore.port}/${var.db_name}"
+      type  = "PLAINTEXT"
+    }
+
   }
 
   logs_config {
