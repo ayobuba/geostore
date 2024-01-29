@@ -10,7 +10,7 @@ locals {
   tags = {
     Name       = local.name
     Example    = local.name
-    Repository = "https://github.com/terraform-aws-modules/terraform-aws-rds"
+    Repository = "https://github.com/ayobuba/geostore"
   }
 }
 
@@ -39,7 +39,7 @@ resource "aws_codebuild_project" "geostore" {
     }
     environment_variable {
       name  = "GEOSTORE_URL"
-      value = "jdbc:postgresql://${aws_db_instance.geostore.address}:${aws_db_instance.geostore.port}/${var.db_name}"
+      value = "jdbc:postgresql://${aws_db_instance.geostore.endpoint}/${var.db_name}"
       type  = "PLAINTEXT"
     }
 
