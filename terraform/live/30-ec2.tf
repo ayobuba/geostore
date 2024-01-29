@@ -21,7 +21,8 @@ resource "aws_instance" "web_server" {
 
 
   tags = {
-    Name = "WebServer"
+    name = "geostore-webServer",
+    app  = "geostore"
   }
 
   associate_public_ip_address = true
