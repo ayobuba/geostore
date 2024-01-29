@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - sudo apt-get update
+      - sudo apt-get install -y apache2
+      - sudo apt-get install -y openjdk-8-jdk maven
+  pre_build:
+    commands:
+      - sudo systemctl start apache2
+      - sudo systemctl enable apache2
+      - git clone https://github.com/geosolutions-it/geostore.git
+      - cd geostore
+  build:
+    commands:
+      - mvn clean install -Dovrdir=postgres -Ppostgres
+  post_build:
+    commands:
+      # Commands to deploy or further process the build artifacts
+        - echo Build completed on `date`
+        - mvn jetty:run

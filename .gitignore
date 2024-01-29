@@ -38,3 +38,16 @@ src/core/security/target
 #h2_disk database
 src/web/app/test.trace.db
 src/web/app/test.h2.db
+
+# Compiled files
+*.tfstate
+*.tfstate.backup
+
+# Module directory
+.terraform/
+
+# tfvars files
+*.tfvars
+
+.idea
+
